@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace FitnessTableApp
 {
@@ -20,6 +21,7 @@ namespace FitnessTableApp
                 double height = double.Parse(heightTextBox.Text);
                 double weight = double.Parse(weightTextBox.Text);
                 int age = int.Parse(ageTextBox.Text);
+                double wrist = double.Parse(wristTextBox.Text);
                 double activityLevel = GetActivityLevel();
 
                 // 計算BMI
@@ -27,7 +29,24 @@ namespace FitnessTableApp
                 double bmi = weight / (heightInMeter * heightInMeter);
 
                 // 顯示BMI結果
-                bmiResultTextBlock.Text = $"您的BMI為: {bmi:F2}";
+                bmiResultTextBlock.Text = $"BMI: {bmi.ToString("0.00")}";
+
+                // 根據BMI值設置顏色
+                if (bmi >= 20 && bmi <= 24) // 正常範圍
+                {
+                    bmiResultTextBlock.Text = $"BMI:{bmi.ToString("0.0")}---正常";
+                    bmiResultTextBlock.Foreground = Brushes.Green;
+                }
+                else if (bmi > 26) // 肥胖範圍
+                {
+                    bmiResultTextBlock.Text = $"BMI:{bmi.ToString("0.0")}---肥胖";
+                    bmiResultTextBlock.Foreground = Brushes.Red;
+                }
+                else if (bmi < 20) // 太瘦範圍
+                {
+                    bmiResultTextBlock.Text = $"BMI:{bmi.ToString("0.0")}---太瘦";
+                    bmiResultTextBlock.Foreground = Brushes.Red;
+                }
 
                 // 計算REE
                 double ree;
@@ -40,12 +59,17 @@ namespace FitnessTableApp
                     ree = (10 * weight) + (6.25 * 160) - (5 * age) - 161;
                 }
 
-                bmiResultTextBlock.Text += $"\n您的靜態能量消耗值(REE)為: {ree:F0} 卡路里";
+                reeResultTextBlock.Text = $"\n您的靜態能量消耗值(REE)為: {ree:F0} 卡路里";
+
+                // 計算骨架系數
+                double skeletonIndex = CalculateSkeletonIndex(height, wrist);
+                string skeletonType = GetSkeletonType(skeletonIndex, gender);
+                skeletonIndexTextBlock.Text = $"骨架系數: {skeletonIndex:F2} - {skeletonType}";
 
                 // 根據活動程度計算建議的每日熱量攝取量
                 double bmr = ree;
                 double dailyCalories = bmr * activityLevel;
-                bmiResultTextBlock.Text += $"\n建議每日熱量攝取量: {dailyCalories:F0} 卡路里";
+                reeResultTextBlock.Text += $"\n根據活動程度建議每日熱量攝取量: {dailyCalories:F0} 卡路里";
             }
             catch (FormatException)
             {
@@ -56,6 +80,7 @@ namespace FitnessTableApp
                 MessageBox.Show($"發生錯誤: {ex.Message}");
             }
         }
+
 
         private double GetActivityLevel()
         {
@@ -77,6 +102,43 @@ namespace FitnessTableApp
             }
         }
 
-        
+        private double CalculateSkeletonIndex(double height, double wrist)
+        {
+            return height / wrist;
+        }
+
+        private string GetSkeletonType(double skeletonIndex, string gender)
+        {
+            if (gender == "男性")
+            {
+                if (skeletonIndex < 9.6)
+                {
+                    return "大骨架";
+                }
+                else if (skeletonIndex > 10.4)
+                {
+                    return "小骨架";
+                }
+                else
+                {
+                    return "中骨架";
+                }
+            }
+            else // 女性
+            {
+                if (skeletonIndex < 9.9)
+                {
+                    return "大骨架";
+                }
+                else if (skeletonIndex > 10.9)
+                {
+                    return "小骨架";
+                }
+                else
+                {
+                    return "中骨架";
+                }
+            }
+        }
     }
 }
