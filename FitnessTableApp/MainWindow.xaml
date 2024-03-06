@@ -29,6 +29,7 @@
             <TextBlock x:Name="bmiResultTextBlock" FontWeight="Bold" Margin="0,20"/>
             <TextBlock x:Name="reeResultTextBlock" FontWeight="Bold" Margin="0,20"/>
             <TextBlock x:Name="skeletonIndexTextBlock" FontWeight="Bold" Margin="0,20"/>
+            <TextBlock x:Name="bmrResultTextBlock" FontWeight="Bold" Margin="0,20"/>
         </StackPanel>
     </Grid>
 </Window>
