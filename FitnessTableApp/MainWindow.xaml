@@ -1,7 +1,7 @@
 ﻿<Window x:Class="FitnessTableApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="檢驗表" Height="650" Width="500">
+        Title="檢驗表" Height="850" Width="500">
     <Grid>
         <StackPanel Margin="20">
             <TextBlock Text="性別:" FontWeight="Bold" Margin="150,10,0,0"/>
@@ -25,11 +25,26 @@
                 <ComboBoxItem Content="一般活動度-每周運動6-7日 (1.725)"/>
                 <ComboBoxItem Content="活動量大的生活模式-每日運動2回 (2)"/>
             </ComboBox>
+            <TextBlock Grid.Row="0" Text="增重/減脂期：" Width="300" FontWeight="Bold" />
+            <ComboBox x:Name="weightChangeComboBox" Grid.Row="0" Grid.Column="1" Width="300">
+                <ComboBoxItem Content="增重期" />
+                <ComboBoxItem Content="減脂期" />
+            </ComboBox>
             <Button Content="Calculate" Click="CalculateBMI_Click" Margin="0,20,0,0" Width="300"/>
-            <TextBlock x:Name="bmiResultTextBlock" FontWeight="Bold" Margin="0,20"/>
-            <TextBlock x:Name="reeResultTextBlock" FontWeight="Bold" Margin="0,20"/>
-            <TextBlock x:Name="skeletonIndexTextBlock" FontWeight="Bold" Margin="0,20"/>
-            <TextBlock x:Name="bmrResultTextBlock" FontWeight="Bold" Margin="0,20"/>
+            <TextBlock x:Name="bmiResultTextBlock" FontWeight="Bold" Margin="0,20,0,0" Width="300"/>
+            <TextBlock x:Name="reeResultTextBlock" FontWeight="Bold" Margin="0,20,0,0" Width="300"/>
+            <TextBlock x:Name="bmrResultTextBlock" FontWeight="Bold" Margin="0,20,0,0" Width="300"/>
+            <TextBlock x:Name="bmrcarbResultTextBlock" Grid.Row="1" Grid.Column="1" Width="300" />
+            <TextBlock x:Name="bmrproteinResultTextBlock" Grid.Row="2" Grid.Column="1" Width="300" />
+            <TextBlock x:Name="bmrfatResultTextBlock" Grid.Row="3" Grid.Column="1" Width="300" />
+            <TextBlock x:Name="tdeeResultTextBlock" FontWeight="Bold" Margin="0,20,0,0" Width="300"/>
+            <TextBlock x:Name="carbResultTextBlock" Grid.Row="1" Grid.Column="1" Width="300" />
+            <TextBlock x:Name="proteinResultTextBlock" Grid.Row="2" Grid.Column="1" Width="300" />
+            <TextBlock x:Name="fatResultTextBlock" Grid.Row="3" Grid.Column="1" Width="300" />
+            <TextBlock x:Name="skeletonIndexTextBlock" FontWeight="Bold" Margin="0,20,0,0" Width="300"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="85,720,85,45">
+            <TextBlock Text="Copyright © 2024 by muscletaipei@gmail.com" VerticalAlignment="Center" Width="305" TextAlignment="Center"/>
         </StackPanel>
     </Grid>
 </Window>
