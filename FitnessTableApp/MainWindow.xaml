@@ -33,10 +33,10 @@
             <Button Content="Calculate" Click="CalculateBMI_Click" Margin="0,20,0,0" Width="300"/>
             <TextBlock x:Name="bmiResultTextBlock" FontWeight="Bold" Margin="0,20,0,0" Width="300"/>
             <TextBlock x:Name="reeResultTextBlock" FontWeight="Bold" Margin="0,20,0,0" Width="300"/>
-            <TextBlock x:Name="bmrResultTextBlock" FontWeight="Bold" Margin="0,20,0,0" Width="300"/>
             <TextBlock x:Name="bmrcarbResultTextBlock" Grid.Row="1" Grid.Column="1" Width="300" />
             <TextBlock x:Name="bmrproteinResultTextBlock" Grid.Row="2" Grid.Column="1" Width="300" />
             <TextBlock x:Name="bmrfatResultTextBlock" Grid.Row="3" Grid.Column="1" Width="300" />
+            <TextBlock x:Name="bmrResultTextBlock" FontWeight="Bold" Margin="0,20,0,0" Width="300"/>
             <TextBlock x:Name="tdeeResultTextBlock" FontWeight="Bold" Margin="0,20,0,0" Width="300"/>
             <TextBlock x:Name="carbResultTextBlock" Grid.Row="1" Grid.Column="1" Width="300" />
             <TextBlock x:Name="proteinResultTextBlock" Grid.Row="2" Grid.Column="1" Width="300" />

@@ -78,7 +78,6 @@ namespace FitnessTableApp
                 }
 
                 // 顯示BMR結果
-                bmrResultTextBlock.Text = $"\n您的基礎代謝率(BMR)為: {bmr:F0} 卡路里";
 
 
                 // 根據活動程度計算建議的每日熱量攝取量
@@ -86,20 +85,19 @@ namespace FitnessTableApp
                 double bmrcarb;
                 double bmrprotein;
                 double bmrfat;
-                //bmrResultTextBlock.Text += $"\n根據BMR活動程度建議每日熱量攝取量: {bmrdailyCalories:F0} 卡路里";
-                bmrcarb = (bmr * 0.6) / 4;
-                bmrprotein = (bmr * 0.14) / 4;
-                bmrfat = (bmr * 0.26) / 9;
+                bmrcarb = (ree * 0.6) / 4;
+                bmrprotein = (ree * 0.14) / 4;
+                bmrfat = (ree * 0.26) / 9;
 
-                bmrcarbResultTextBlock.Text = $"醣類: {bmrcarb:F0} 卡路里";
-                bmrproteinResultTextBlock.Text = $"蛋白質: {bmrprotein:F0} 卡路里";
-                bmrfatResultTextBlock.Text = $"脂肪: {bmrfat:F0} 卡路里";
+                bmrcarbResultTextBlock.Text = $"醣類: {bmrcarb:F0} 克/4卡路里";
+                bmrproteinResultTextBlock.Text = $"蛋白質: {bmrprotein:F0} 克/4卡路里";
+                bmrfatResultTextBlock.Text = $"脂肪: {bmrfat:F0} 克/9卡路里";
 
+                bmrResultTextBlock.Text = $"\n您的基礎代謝率(BMR)為: {bmr:F0} 卡路里";
                 // 計算TDEE
                 double tdee = bmrdailyCalories;
 
                 // 顯示TDEE結果
-                tdeeResultTextBlock.Text = $"每日基礎代謝率 (TDEE): {tdee:F0} 卡路里";
 
                 // 判斷增重期或減脂期
                 double carb;
@@ -121,7 +119,7 @@ namespace FitnessTableApp
                         // 醣類:((根據BMR活動程度建議每日熱量攝取量+500)*30%)/4
                         // 蛋白質:((根據BMR活動程度建議每日熱量攝取量+500)*50%)/4
                         // 脂肪:((根據BMR活動程度建議每日熱量攝取量+500)*20%)/9
-                        carb = ((tdee + 500) * 0.3) / 4;
+                        carb = ((tdee + 500) * 0.3) / 4; 
                         protein = ((tdee + 500) * 0.5) / 4;
                         fat = ((tdee + 500) * 0.2) / 9;
                     }
@@ -136,9 +134,10 @@ namespace FitnessTableApp
                 }
 
                 // 顯示結果
-                carbResultTextBlock.Text = $"醣類: {carb:F0} 卡路里";
-                proteinResultTextBlock.Text = $"蛋白質: {protein:F0} 卡路里";
-                fatResultTextBlock.Text = $"脂肪: {fat:F0} 卡路里";
+                tdeeResultTextBlock.Text = $"每日基礎代謝率 (TDEE)增重或減脂:  {tdee:F0} 卡路里";
+                carbResultTextBlock.Text = $"醣類: {carb:F0} 克/4卡路里";
+                proteinResultTextBlock.Text = $"蛋白質: {protein:F0} 克/4卡路里";
+                fatResultTextBlock.Text = $"脂肪: {fat:F0} 克/9卡路里";
             
             }
             catch (FormatException)
